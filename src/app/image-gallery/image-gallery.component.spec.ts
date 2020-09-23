@@ -19,19 +19,20 @@ describe('ImageGalleryComponent', () => {
     fixture.detectChanges();
   });
 
-  fit('should create', () => {
-    expect(component).toBeTruthy();
-  });
-  fit('should images be a ', () => {
-    expect(component.images).toBeUndefined();
-  });
-  fit('should filterBy be a ', () => {
-    expect(component.filterBy).toEqual('all');
-  });
-  fit('should allImages be a ', () => {
-    expect(component.allImages).toEqual([]);
-  });
-  fit('should executed method ngOnChanges()', () => {
-    expect(component.ngOnChanges()).toBeUndefined();
-  });
+  // fit('should create', () => {
+  //   expect(component).toBeTruthy();
+  // });
+  // fit('should images be a ', () => {
+  //   expect(component.images).toBeUndefined();
+  // });
+  // fit('should filterBy be a ', () => {
+  //   expect(component.filterBy).toEqual('all');
+  // });
+  // fit('should allImages be a ', () => {
+  //   expect(component.allImages).toEqual([]);
+  // });
+  // fit('should executed method ngOnChanges()', () => {
+  //   expect(component.ngOnChanges()).toBeUndefined();
+  // });
+
 });
