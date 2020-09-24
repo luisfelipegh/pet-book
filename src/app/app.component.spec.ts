@@ -14,7 +14,7 @@ describe('AppComponent', () => {
   });
 
   it('Cuando se carga la vista, debe existir la variable con el mismo nombre del proyecto', () => {
-    let variable : string = component.title
+    const variable : string = component.title;
     expect(variable).toEqual('pet-book');
   });
 

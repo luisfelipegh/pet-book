@@ -1,6 +1,6 @@
-import {  Image } from '../models/image.model';
+import {  ImageModel } from '../models/image.model';
 
-export const mockImagesDelatils: Image[] = [
+export const mockImagesDelatils: ImageModel[] = [
     { id: 1, brand: 'perro', url: 'assets/images/perro1.jpg' },
     { id: 2, brand: 'perro', url: 'assets/images/perro2.jpg' },
     { id: 3, brand: 'gato', url: 'assets/images/gato1.jpg' },

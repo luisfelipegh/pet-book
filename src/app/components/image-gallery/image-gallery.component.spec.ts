@@ -1,15 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { mockImagesDelatils } from 'src/app/core/mocks/mock-images-details';
 import { FilterimagesPipe } from 'src/app/core/pipes/filterimages.pipe';
 import { ImageService } from 'src/app/core/services/image.service';
 import { GalleryComponent } from './image-gallery.component';
 
-const Imagesdelatils = [
-  { id: 1, brand: 'perro', url: 'assets/images/perro1.jpg' },
-  { id: 2, brand: 'perro', url: 'assets/images/perro2.jpg' },
-  { id: 3, brand: 'gato', url: 'assets/images/gato1.jpg' },
-  { id: 4, brand: 'gato', url: 'assets/images/gato2.jpeg' },
-  { id: 5, brand: 'perro', url: 'assets/images/perro3.jpg' },
-];
+const Imagesdelatils = mockImagesDelatils;
 
 describe('GalleryComponent', () => {
   let component: GalleryComponent;
@@ -20,7 +15,7 @@ describe('GalleryComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [GalleryComponent],
+      declarations: [GalleryComponent, FilterimagesPipe],
       providers: [
         { provide: ImageService, useValue: mockService },
         { provide: FilterimagesPipe, useValue: mockPipe }
@@ -29,45 +24,44 @@ describe('GalleryComponent', () => {
       .compileComponents();
   }));
 
-  beforeEach(async() => {
+  beforeEach(async(() => {
     spy = spyOn(mockService, 'getImages').and.returnValues(Imagesdelatils);
 
     fixture = TestBed.createComponent(GalleryComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  });
+  }));
 
   it('Debe crear el componente', () => {
     expect(component).toBeTruthy();
   });
 
-  // it(`Cuando se carga la vista, debe existir un boton que contenga 'All'`, () => {
-  //   const btnAll = fixture.debugElement.nativeElement.querySelector('#All');
-  //   expect(btnAll.textContent).toContain('All');
-  // });
+  it(`Cuando se carga la vista, debe existir un boton que contenga 'All'`, () => {
+    const btnAll = fixture.debugElement.nativeElement.querySelector('#All');
+    expect(btnAll.textContent).toContain('All');
+  });
 
-  // it(`Cuando se carga la vista, debe existir un boton que contenga 'Perro'`, () => {
-  //   const btnPerro = fixture.debugElement.nativeElement.querySelector('#Perro');
-  //   expect(btnPerro.textContent).toContain('Perro');
-  // });
+  it(`Cuando se carga la vista, debe existir un boton que contenga 'Perro'`, () => {
+    const btnPerro = fixture.debugElement.nativeElement.querySelector('#Perro');
+    expect(btnPerro.textContent).toContain('Perro');
+  });
 
-  // it(`Cuando se carga la vista, debe existir un boton que contenga 'Gato'`, () => {
-  //   const btnGato = fixture.debugElement.nativeElement.querySelector('#Gato');
-  //   expect(btnGato.textContent).toContain('Gato');
-  // });
+  it(`Cuando se carga la vista, debe existir un boton que contenga 'Gato'`, () => {
+    const btnGato = fixture.debugElement.nativeElement.querySelector('#Gato');
+    expect(btnGato.textContent).toContain('Gato');
+  });
 
-
-  // fit('should images be a ', () => {
-  //   expect(component.images).toBeUndefined();
-  // });
-  // fit('should filterBy be a ', () => {
-  //   expect(component.filterBy).toEqual('all');
-  // });
-  // fit('should allImages be a ', () => {
-  //   expect(component.allImages).toEqual([]);
-  // });
-  // fit('should executed method ngOnChanges()', () => {
-  //   expect(component.ngOnChanges()).toBeUndefined();
-  // });
+  it(`Debe tener la variable 'images' y no estar definida`, () => {
+    expect(component.images).toBeUndefined();
+  });
+  it(`Debe tener  la variable 'filterBy' y ser igual a 'all'`, () => {
+    expect(component.filterBy).toEqual('all');
+  });
+  it(`Debe tener la variable 'allImages' y tener todas las imagenes`, () => {
+    expect(component.allImages).toEqual(Imagesdelatils);
+  });
+  it(`Debe tener un metodo 'ngOnChanges()'`, () => {
+    expect(component.ngOnChanges()).toBeUndefined();
+  });
 
 });
