@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { ImageService } from '../services/image.service';
 import { ActivatedRoute } from '@angular/router';
+import { ImageService } from 'src/app/core/services/image.service';
 
 @Component({
   templateUrl: './image-details.component.html',

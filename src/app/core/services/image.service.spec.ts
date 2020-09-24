@@ -13,7 +13,7 @@ describe('ImageService', () => {
 
   describe('getImages', () => {
     it('Cuando se llame el metodo, entonces debe retornar todas las imagenes (5)', () => {
-      let imagenes = service.getImages();
+      const imagenes = service.getImages();
       expect(imagenes.length).toEqual(5);
     });
   });
@@ -21,17 +21,17 @@ describe('ImageService', () => {
   describe('getImage', () => {
     it('Cuando se pasa un id que existe (1), debe retornar la informacion de ese id', () => {
       const id = 1;
-      let imagen = service.getImage(id);
+      const imagen = service.getImage(id);
       expect(imagen.id).toEqual(1);
       expect(imagen.brand).toEqual('perro');
-      expect(imagen.url).toEqual("assets/images/perro1.jpg");
+      expect(imagen.url).toEqual('assets/images/perro1.jpg');
     });
 
     it('Cuando se pasa un id que NO existe (100), debe retornar indefinido', () => {
       const id = 100;
-      let imagen = service.getImage(id);
+      const imagen = service.getImage(id);
       expect(imagen).toEqual(undefined);
     });
   });
-  
+
 });
