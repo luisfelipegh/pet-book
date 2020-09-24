@@ -7,8 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GalleryComponent } from './image-gallery/image-gallery.component';
 import { ImageDetailComponent } from './image-details/image-details.component';
-import { FilterimagesPipe } from './filterimages.pipe';
-import { ImageService } from './image.service';
+import { FilterimagesPipe } from './pipes/filterimages.pipe';
+import { ImageService } from './services/image.service';
 
 @NgModule({
   declarations: [
