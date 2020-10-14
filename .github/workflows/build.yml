@@ -32,9 +32,9 @@ jobs:
           npm install -g @angular/cli
           npm install
           ng build --prod
-          npm run test-ci   
-          ls /coverage
-          ls
+      - name: Running Test
+        run: |
+          npm run test-ci
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
