@@ -7,7 +7,7 @@ on:
     types: [opened, synchronize, reopened]
 jobs:
   build:
-    name: SonarCloud
+    name: Build
     runs-on: ubuntu-latest
     strategy:
       matrix:
