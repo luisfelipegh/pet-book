@@ -34,7 +34,7 @@ jobs:
       - name: Running Test
         run: npm run test-ci
       - name: Running Build
-        run: npm run build:prod
+        run: npm run build-prod
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
