@@ -27,14 +27,14 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: npm install and npm run build
+      - name: npm install
         run: |
           npm install -g @angular/cli
           npm install
-          ng build --prod
       - name: Running Test
-        run: |
-          npm run test-ci
+        run: npm run test-ci
+      - name: Running Build
+        run: npm run build:prod
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
