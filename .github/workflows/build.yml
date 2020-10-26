@@ -41,7 +41,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       - name: Running Build
-      run: npm run build-prod
+        run: npm run build-prod
       - name: Upload to S3
         uses: jakejarvis/s3-sync-action@master
         with:
