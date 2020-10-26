@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: workspaceGitHub
+        working-directory: ./workspaceGitHub
     strategy:
       matrix:
         node-version: [12.x]
