@@ -59,7 +59,7 @@ steps:
   inputs:
     awsCredentials: 'aws-luisfelipegh'
     regionName: 'us-east-2'
-    bucketName: 'pet-book'
+    bucketName: 'pet-book-azure'
     sourceFolder: '$(Build.ArtifactStagingDirectory)'
     globExpressions: '*.zip'
     filesAcl: 'public-read-write'
