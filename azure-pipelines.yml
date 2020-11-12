@@ -10,21 +10,24 @@ steps:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
 
-- script: |
-    npm install -g @angular/cli
-    npm install
-    ng build --prod
-    npm run test-ci   
-    ls /coverage
-    ls     
-  displayName: 'npm install, unitTest and build'
+- task: CmdLine@2
+  displayName: 'NPM Install'
+  inputs:
+    script: |
+      npm i -g @angular/cli
+      npm i
+      ng build --prod
+- task: CmdLine@2
+  displayName: 'Run Unit Test'
+  inputs:
+    script: 'npm run test-ci'
 
 - task: SonarCloudPrepare@1
   displayName: 'Prepare analysis on Sonar'
   inputs:
     SonarCloud: 'sonar-cloud'
     scannerMode: 'CLI'
-    organization: 'cacevedod'
+    organization: 'luisfelipegh'
 
 - task: SonarCloudAnalyze@1
   displayName: 'Run Code Analysis'
@@ -36,7 +39,7 @@ steps:
 - task: sonarcloud-buildbreaker@2
   inputs:
     SonarCloud: 'sonar-cloud'
-    organization: 'cacevedod'
+    organization: 'luisfelipegh'
 
 - task: ArchiveFiles@2
   inputs:
@@ -47,3 +50,12 @@ steps:
     replaceExistingArchive: true
 
 - task: PublishBuildArtifacts@1
+
+- task: S3Upload@1
+  inputs:
+    awsCredentials: 'aws-luisfelipegh'
+    regionName: 'us-east-2'
+    bucketName: 'pet-book'
+    sourceFolder: 'dist/pet-book'
+    globExpressions: '*.zip'
+    filesAcl: 'public-read-write'
