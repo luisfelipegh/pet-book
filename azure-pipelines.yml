@@ -57,6 +57,6 @@ steps:
     awsCredentials: 'aws-luisfelipegh'
     regionName: 'us-east-2'
     bucketName: 'pet-book-github'
-    sourceFolder: 'dist/pet-book'
+    sourceFolder: '$(Build.ArtifactStagingDirectory)'
     globExpressions: '*.zip'
     filesAcl: 'public-read-write'
