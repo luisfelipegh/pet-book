@@ -25,9 +25,10 @@ steps:
 - task: SonarCloudPrepare@1
   displayName: 'Prepare analysis on Sonar'
   inputs:
-    SonarCloud: 'sonar-cloud'
-    scannerMode: 'CLI'
+    SonarCloud: 'sonar-luisfelipegh'
     organization: 'luisfelipegh'
+    scannerMode: 'CLI'
+    configMode: 'file'
 
 - task: SonarCloudAnalyze@1
   displayName: 'Run Code Analysis'
@@ -38,7 +39,7 @@ steps:
 
 - task: sonarcloud-buildbreaker@2
   inputs:
-    SonarCloud: 'sonar-cloud'
+    SonarCloud: 'sonar-luisfelipegh'
     organization: 'luisfelipegh'
 
 - task: ArchiveFiles@2
