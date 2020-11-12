@@ -49,14 +49,18 @@ steps:
     archiveType: 'zip'
     archiveFile: '$(Build.ArtifactStagingDirectory)/pet-book-$(Build.BuildId).zip'
     replaceExistingArchive: true
-
 - task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: '$(Build.ArtifactStagingDirectory)/pet-book-$(Build.BuildId).zip'
+    publishLocation: 'Container'
 
 - task: S3Upload@1
   inputs:
     awsCredentials: 'aws-luisfelipegh'
     regionName: 'us-east-2'
-    bucketName: 'pet-book-github'
+    bucketName: 'pet-book'
     sourceFolder: '$(Build.ArtifactStagingDirectory)'
     globExpressions: '*.zip'
     filesAcl: 'public-read-write'
+    createBucket: true
