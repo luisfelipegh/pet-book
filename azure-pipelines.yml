@@ -64,3 +64,9 @@ steps:
     globExpressions: '*.zip'
     filesAcl: 'public-read-write'
     createBucket: true
+
+- task: Docker@2
+  inputs:
+    containerRegistry: 'docker-luisfelipeg'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
